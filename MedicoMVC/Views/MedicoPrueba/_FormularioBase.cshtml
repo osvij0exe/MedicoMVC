@@ -1,0 +1,43 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Title = "Formulario Base";
+    Layout = "_Layout";
+}
+
+
+<div class="section">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="container justify-content-center">
+        <div class=" row mt-4">
+            <div class=" col col-sm-5">
+                <label asp-for="NombreCompleto" class="form-label"></label>
+                <input type="text" asp-for="NombreCompleto" class="form-control">
+            </div>
+            <div class="col col-sm-5">
+                <label asp-for="Matricula" class="form-label"></label>
+                <input asp-for="Matricula" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class=" col col-sm-5">
+                <label asp-for="CedulaProfecional" class="form-label"></label>
+                <input asp-for="CedulaProfecional" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="colcol-auto">
+                @Html.LabelFor(m => m.EspecialidadSeleccionada, new {@class="form-label"})
+                @Html.DropDownListFor(m => m.EspecialidadSeleccionada,
+                         new SelectList(Model.Especialidades, "Id", "NombreEspecialidad"),"--Selecione una opcion--",new{ @class="form-select" })
+            </div>
+        </div>
+
+    </div>
+    <div class="row mt-4 justify-content-start">
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" type="submit">Agregar</button>
+        </div>
+    </div>
+</div>
+

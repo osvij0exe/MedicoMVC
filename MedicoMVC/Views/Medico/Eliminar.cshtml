@@ -1,0 +1,24 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Title= "Eliminar Medico";
+    Layout = "_Layout";
+}
+
+
+<section>
+    <div class="container">
+        <h1>Esta seguro que desea eliminar al medico: @Model.NombreCompleto</h1>
+        <form asp-controller="Medico" asp-action="Eliminar" method="post">
+            <input type="hidden" asp-for="MedicoId">
+            <div class="row my-3 justify-content-start">
+                <div class="col col-auto">
+                    <button class="BtnDanger" type="submit">Aceptar<span><i class="bi bi-check"></i></span></button>
+                </div>
+                <div class="col col-auto">
+                    <a class="BtnWarning" asp-controller="Medico" asp-action="index">Cancelar<span><i class="bi bi-exclamation-lg"></i></span></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

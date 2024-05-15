@@ -1,0 +1,28 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Title = "Editar Datos del Medico";
+    Layout = "_Layout";
+}
+
+
+<section>
+    <div class="container">
+        <h1>Editar Datos Del Medico: @Model.NombreCompleto</h1>
+    <form asp-controller="Medico" asp-action="Editar" method="post">
+        <input type="hidden" asp-for="MedicoId">
+        <partial name="_FormularioBase" model="Model">
+                <div class="col col-sm-5">
+                        @Html.LabelFor(m => m.EspecialidadSeleccionada, new { @class = "for-label" })
+                        @Html.DropDownListFor(m => m.EspecialidadSeleccionada,
+                                 new SelectList(Model.Especialidades, "Id", "NombreEspecialidad"), Model.NombreEspecialidad, new { @class = "form-select" })
+                </div>
+    </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        <partial name="_validationScriptsPartial" />
+    }
+}

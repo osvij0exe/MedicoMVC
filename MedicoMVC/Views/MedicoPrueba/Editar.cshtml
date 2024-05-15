@@ -1,0 +1,18 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Titlte= "Editar Medico";
+    Layout="_Layout";
+}
+
+<section>
+    <div class="container">
+        <h1>Editar datos del Medico_ @Model.NombreCompleto</h1>
+        <form asp-controller="MedicoPrueba" asp-action="Editar" method="post">
+        <input type="hidden" asp-for="MedicoId">
+        <partial name="_FormularioBase" model="Model">
+
+        </form>
+    </div>
+</section>
+

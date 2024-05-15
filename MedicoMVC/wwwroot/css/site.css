@@ -1,0 +1,197 @@
+:root {
+    --green: #16a085;
+    --warning: #bfd200;
+    --danger: #ba324f;
+    --black: #444;
+    --light-color: #777;
+    --box-shadow: .5rem .5rem 0 rgba(22,160,133,.2);
+    --text-shadow: .4rem .4rem 0 rgba(0,0,0,.2);
+    --border: .2rem solid var(--green);
+    --borderWarning: .2rem solid var(--warning);
+    --borderDanger: .2rem solid var(--danger);
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.Btn{
+    display:inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+
+.Btn span{
+    padding: .3rem .5rem;
+    border-radius: .6rem;
+    background: var(--green);
+    color: #fff;
+    margin-left: .5rem;
+} 
+
+.Btn:hover{
+    background: var(--green);
+    color: #fff;
+}
+
+.Btn:hover span{
+    color: var(--green);
+    background: #fff;
+    margin-left: .9rem;
+}
+
+
+.BtnWarning {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--borderWarning);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--warning);
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.BtnWarning span {
+    padding: .3rem .5rem;
+    border-radius: .6rem;
+    background: var(--warning);
+    color: #fff;
+    margin-left: .5rem;
+}
+
+.BtnWarning:hover {
+    background: var(--warning);
+    color: #fff;
+}
+
+.BtnWarning:hover span {
+    color: var(--warning);
+    background: #fff;
+    margin-left: .9rem;
+}
+
+.BtnDanger {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--borderDanger);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.BtnDanger span {
+        padding: .3rem .5rem;
+        border-radius: .6rem;
+        background: var(--danger);
+        color: #fff;
+        margin-left: .5rem;
+}
+
+.BtnDanger:hover {
+        background: var(--danger);
+        color: #fff;
+}
+
+.BtnDanger:hover span {
+            color: var(--danger);
+            background: #fff;
+            margin-left: .9rem;
+}
+
+.inputBox{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    position: relative;
+    width: 250px;
+}
+
+.inputBox input {
+    width: 100%;
+    padding: .5rem;
+    border: var(--border);
+    background: #fff;
+    border-radius: .5rem;
+    outline: none;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1rem;
+}
+
+.inputBox span{
+    position:absolute;
+    left: 0;
+    padding: .5rem;
+    pointer-events:none;
+    font-size: .7rem;
+    color:var(--green);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+    .inputBox input:focus ~ span,
+    .inputBox input:valid ~ span {
+        color: var(--green);
+        transform: translateX(.5rem) translateY(-1.5rem);
+        font-size: 0.50em;
+        padding: 0 10px;
+        background: #ffff;
+        border-left: .1rem solid var(--green);
+        border-right: .1rem solid var(--green);
+        letter-spacing: 0.2em;
+    }
+
+
+@media (max-width:768px) {
+    .myTable {
+        font-size: .80rem;
+        margin-top: 1rem;
+        margin-left: .5rem;
+    }
+}
+
+@media (max-width:450px){
+    .myTable {
+        font-size: .60rem;
+        margin-top: .5rem;
+        margin-left: .2rem;
+    }
+
+}

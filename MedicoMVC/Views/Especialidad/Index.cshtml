@@ -1,0 +1,33 @@
+﻿@model ICollection<MedicoMVC.Models.Response.EspecialidadDTOResponse>
+
+@{
+    ViewBag.Title = "Lista de Especialidades";
+    Layout = "_Layout";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Lista de Clientes</h1>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Especialidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.NombreEspecialidad</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

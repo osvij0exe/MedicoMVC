@@ -1,0 +1,102 @@
+﻿@model MedicoMVC.Models.ViewModels.SearchMedicoViewModel
+
+
+@{
+    ViewBag.Title= "Lista de Medicos";
+    Layout = "_Layout";
+}
+
+<section>
+    <div class="container">
+        <form asp-controller="MedicoPrueba" asp-action="" method="get">
+            <h1>Lista de Medicos</h1>
+            <div class="row justify-content-start">
+                <div class="col col-sm-5">
+                    <label class="form-label" asp-for="NombreCompleto">Nombre</label>
+                    <input asp-for="NombreCompleto" type="text" class="form-control" placeholder="Buscar por nombre..." value="@ViewBag.nombreCompleto"></input>
+                </div>
+                <div class="col col-sm-5">
+                    <label class="form-label" asp-for="Matricula">Matricula</label>
+                    <input asp-for="Matricula" type="text" class="form-control" placeholder="Buscar por matricula....." value="@ViewBag.matricula">
+                </div>
+            </div>
+            <div class=" row justify-content-start">
+                <div class=" col col-sm-5">
+                    <label class="form-label" asp-for="CedulaProfecional">Cedula Profecional</label>
+                    <input asp-for="CedulaProfecional" type="text" placeholder="Buscar por Cedula Profecional...." class="form-control" value="@ViewBag.CedulaProfecional">
+                </div>
+            </div>
+            <div class="row justify-content-start" >
+                <div class=" col col-sm-5">
+                    @Html.LabelFor(l => l.EspecialidadSeleccionada, new {@class= "form-label"})
+                    @Html.DropDownListFor(d => d.EspecialidadSeleccionada,
+                             new SelectList(Model.Especialidades, "Id", "NombreEspecialidad"),"Todas", new {@class="form-select"})
+                </div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col col-sm-5">
+                    <label asp-for="FechaIngresoInicio" class="form-label"></label>
+                    <input type="date" asp-for="FechaIngresoInicio" asp-format="dd/MM/yyyy" class="form-control">
+                </div>
+                <div class=" col col-sm-5">
+                    <label asp-for="FechaIngresoFin" class="form-label"></label>
+                    <input type="date" asp-for="FechaIngresoFin" asp-format="dd/MM/yyyy" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-end mt-4">
+                <div class="col col-sm-5">
+                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                    <a class="btn btn-outline-primary" asp-controller="MedicoPrueba" asp-action="Crear">Agregar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container text-center mt-4">
+        <div class="row mt-4">
+            <div class=" col">
+                @if(Model.Medicos is null)
+                {
+                    <p>Sin resultados</p>
+                }
+                else if(!Model.Medicos.Any())
+                {
+                    <p>Sin datos para mostrar</p>
+                }
+                else
+                {
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr class=" table-success">
+                                <th>Codigo</th>
+                                <th>Nombre Completo</th>
+                                <th>Fecha Ingreso</th>
+                                <th>Matricula</th>
+                                <th>Cedula Profecional</th>
+                                <th>Especialidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var medico in Model.Medicos)
+                            {
+                                <tr>
+                                    <td>@medico.MedicoId</td>
+                                    <td>@medico.NombreCompleto</td>
+                                    <td>@medico.FechaIngreso</td>
+                                    <td>@medico.Matricula</td>
+                                    <td>@medico.CedulaProfecional</td>
+                                    <td>@medico.Especialidad.NombreEspecialidad</td>
+                                    <td>
+                                        <a class="btn btn-outline-secondary" asp-controller="MedicoPrueba" asp-action="Editar" asp-route-Id="@medico.MedicoId">Editar</a>
+                                        <a class="btn btn-outline-danger" asp-controller="MedicoPrueba" asp-action="Eliminar" asp-route-Id="@medico.MedicoId">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

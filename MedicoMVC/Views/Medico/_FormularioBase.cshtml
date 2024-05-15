@@ -1,0 +1,41 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Title = "Formulario Base";
+    Layout = "_Layout";
+}
+
+<section>
+    <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+
+            <div class="col col-sm-5">
+                @Html.LabelFor(m => m.NombreCompleto, new { @class = "for-label" })
+                @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control" })
+            </div>
+            <div class="col col-sm-5">
+            @Html.LabelFor(m => m.Matricula, new { @class = "for-label" })
+            @Html.TextBoxFor(m => m.Matricula, new { @Class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+        <div class="col col-sm-5">
+            @Html.LabelFor(m => m.CedulaProfecional, new { @class = "for-label" })
+            @Html.TextBoxFor(m => m.CedulaProfecional, new { @Class = "form-control" })
+        </div>
+            <div class="col col-sm-5">
+                @Html.LabelFor(m => m.EspecialidadSeleccionada, new { @class = "for-label" })
+                @Html.DropDownListFor(m => m.EspecialidadSeleccionada,
+                         new SelectList(Model.Especialidades, "Id", "NombreEspecialidad"), "Seleccione", new { @class = "form-select"  })
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-end">
+            <div class="col-auto ">
+                <button class="Btn" type="submit">Aceptar<span><i class="bi bi-check"></i></span></button>
+            </div>
+            <div class="col-auto">
+            <a class="BtnWarning" asp-controller="Medico" asp-action="index">Cancelar<span><i class="bi bi-exclamation-lg"></i></span></a>
+
+            </div>
+        </div>
+</section>

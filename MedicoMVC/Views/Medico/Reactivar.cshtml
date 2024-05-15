@@ -1,0 +1,22 @@
+﻿@model MedicoMVC.Models.ViewModels.MedicoViewModel
+
+@{
+    ViewBag.Title = "Reactivar Medico";
+    Layout = "_Layout";
+}
+
+<section>
+    <div class="container">
+        <h1> Desea Reactivar al medico: @Model.NombreCompleto</h1>
+        <form asp-controller="MedicoPrueba" asp-action="Reactivar" method="post">
+            <input type="hidden" asp-for="MedicoId">
+            <div class="row justify-content-start">
+                <div class="col-auto">
+                    <button class="Btn" type="submit">Aceptar<span><i class="bi bi-check"></i></span></button>
+                    <a class="BtnWarning" asp-controller="MedicoPrueba" asp-action="MedicosEliminados">Cancelar<span><i class="bi bi-exclamation-lg"></i></span></a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>

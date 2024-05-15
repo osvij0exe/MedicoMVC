@@ -1,0 +1,52 @@
+﻿@model ICollection<MedicoMVC.Models.Response.MedicoDTOResponse>
+
+@{
+    ViewBag.Title = "Lista de Medicos dados de baja";
+    Layout = "_Layout";
+}
+
+
+<section>
+    <div class="container">
+        @if(Model is null)
+        {
+            <p>Sin resultados</p>
+        }
+        else if(!Model.Any())
+        {
+            <p>Sin datos para mostrar</p>
+        }
+        else
+        {
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr class="table-success">
+                        <th>Codigo</th>
+                        <th>Nombre Completo</th>
+                        <th>Matricula</th>
+                        <th>Cedula Profecional</th>
+                        <th>Fecha Ingreso</th>
+                        <th>Especialidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var medico in Model)
+                    {
+                        <tr>
+                            <td>@medico.MedicoId</td>
+                            <td>@medico.NombreCompleto</td>
+                            <td>@medico.Matricula</td>
+                            <td>@medico.CedulaProfecional</td>
+                            <td>@medico.FechaIngreso</td>
+                            <td>@medico.Especialidad.NombreEspecialidad</td>
+                            <td>
+                                <a class="btn btn-outline-primary" asp-controller="MedicoPrueba" asp-action="Reactivar" asp-route-Id="@medico.MedicoId">Reactivar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</section>
